@@ -8,7 +8,7 @@ A typical use case would be some express routes that resolve database queries th
 ```ts
 import uniquePromise from '@public-function/unqiue-promise';
 
-const executeLongRunningFunction = async (): Promise<number> => {
+const executeLongRunningFunction = async () => {
     // is only called once
 }
 
