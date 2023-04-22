@@ -1,6 +1,6 @@
 {
   "name": "@public-function/unique-promise",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Edward Bock <hi@edwardbock.de> (https://www.edwardbock.de/)",
   "description": "Group promises by id and execute only one at a time.",
   "main": "dist/index.js",
