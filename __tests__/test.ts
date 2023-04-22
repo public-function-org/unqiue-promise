@@ -1,5 +1,27 @@
 import uniquePromise from "../src/index";
 
+test('Should execute all different ids', async ()=>{
+    let value = 0;
+    let executed = 0;
+    const executeLongRunningFunction = async (): Promise<number> => {
+        executed++;
+        return new Promise(resolve => {
+            setTimeout(()=>{
+                value++;
+                resolve(value);
+            }, 300);
+        })
+    }
+
+    const results = await Promise.all([
+        uniquePromise('test1', executeLongRunningFunction),
+        uniquePromise('test2', executeLongRunningFunction),
+    ]);
+
+    expect(results).toEqual([1,2]);
+    expect(executed).toBe(2);
+})
+
 test('Should only trigger once', async ()=>{
     let value = 0;
     let executed = 0;
@@ -42,3 +64,4 @@ test('Should trigger twice', async ()=>{
     expect(value2).toBe(2);
     expect(executed).toBe(2);
 });
+
